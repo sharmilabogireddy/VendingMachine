@@ -1,6 +1,6 @@
 # Introduction
 
-This project is a modle of Vending Machine operation.
+This project is a model of Vending Machine operation.
 
 You have 10 different flavours in the vending machine that you can choose to buy. You can choose to pay by using cash or card.
 
