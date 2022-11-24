@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="container restock-container">
+        
+        <form id="restockForm" [formGroup]="restockForm" (ngSubmit)="restock()" novalidate>
+            <div class="restock-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Restock</mat-label>
+                    <input matInput type="number" id="restockInput" formControlName="restock" placeholder="Ex. 5" min="1" />
+                    
+                    <div *ngIf="restockSubmitted && f['restock'].errors" class="error">
+                        <div *ngIf="f['restock'].errors['required']">Restock Number is required</div>
+                        <div *ngIf="f['restock'].errors['min']">Restock min number is 1</div>
+                    </div>
+                </mat-form-field>
+                <button id="restockSubmitButton" style="margin-left: 10px;" type="submit" mat-raised-button color="primary">Restock</button>
+            </div>
+       </form>
+   </div>
+    <div class="dashboard-container">
+        <mat-card class="dashboard-card">
+            <mat-card-subtitle>Total Available Cans</mat-card-subtitle>
+            <mat-card-content>
+                <p data-id="totalAvailable" class="dashboard-value">{{totalAvailable}}</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="dashboard-card">
+            <mat-card-subtitle>Total Sold Cans</mat-card-subtitle>
+            <mat-card-content>
+                <p class="dashboard-value">{{totalSold}}</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="dashboard-card">
+            <mat-card-subtitle>Total Cash Payments</mat-card-subtitle>
+            <mat-card-content>
+                <p class="dashboard-value">{{cash}}</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="dashboard-card">
+            <mat-card-subtitle>Total Card Payments</mat-card-subtitle>
+            <mat-card-content>
+                <p class="dashboard-value">{{card}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <hr/>
+    <div class="container button-toggle-container">
+        <div>
+            <h1>Select your flavour can</h1>
+        </div>
+        <mat-button-toggle-group name="selectCan" aria-label="Select Can" [(ngModel)]="selected">
+            <mat-button-toggle *ngFor="let product of products" value="{{product.name}}">{{product.name}}</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div *ngIf="selected" class="container button-toggle-container">
+        <form id="paymentForm" [formGroup]="paymentForm" (ngSubmit)="payment()">
+            <div class="container">
+                <mat-label>Amont Due: <b>{{CAN_PRICE}}</b></mat-label>
+            </div>
+            <div class="container">
+                <mat-label>Payment Method<span>*</span>: </mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="payment" required>
+                    <mat-radio-button value="Cash">Cash</mat-radio-button>
+                    <mat-radio-button value="Card">Card</mat-radio-button>
+                </mat-radio-group>
+                <div *ngIf="paymentSubmitted && paymentControl['payment'].errors" class="error">
+                    <div *ngIf="paymentControl['payment'].errors['required']">Choose payment method</div>
+                </div>
+            </div>
+            <div class="container">
+                <button type="submit" mat-raised-button color="primary">Pay</button>
+            </div>
+       </form>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    
+</div>

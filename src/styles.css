@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {margin: 10px;}
+
+.app-title{
+    font-size: 50pt;
+    padding: 20px;
+    text-align: center;
+    color: darkblue;
+}
+.dashboard-container{
+    display: flex;
+    margin: 10px;
+}
+.dashboard-card {
+    max-width: 200px;
+    min-width: 200px;
+    min-height: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+.dashboard-value {
+    font-size: 50pt;
+    text-align: center;
+    padding: 20px;
+    color: darkblue;
+}
+
+.button-toggle-container{
+    text-align: center;
+}
+
+.restock-container {
+    display: inline;
+    text-align: right;
+}
+
+.error{
+    color: red;
+}
